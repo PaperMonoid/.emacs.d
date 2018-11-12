@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: prototype
+# key: proto
+# contributor: tritiummonoid
+# --
+${1:Object}.prototype.${3:key} = ${0:null};

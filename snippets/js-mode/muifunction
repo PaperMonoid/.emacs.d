@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: muifunction
+# key: muif
+# contributor: tritiummonoid
+# --
+import React from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+
+function styles(theme) {
+    return {
+    };
+}
+
+function ${1:ComponentName}(props) {
+    const { classes } = props;
+    return (${0:null});
+}
+
+$1.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)($1);
