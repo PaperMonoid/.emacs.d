@@ -119,6 +119,11 @@
   :ensure t)
 (use-package racket-mode
   :ensure t)
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "/bin/sbcl")
+  (setq slime-contribs '(slime-fancy)))
 (use-package clojure-mode
   :ensure t)
 (use-package irony
@@ -210,6 +215,8 @@
   :init (yas-global-mode))
 (use-package yasnippet-snippets
   :ensure t)
+(use-package slime-company
+  :ensure t)
 (use-package company
   :after yasnippet
   :ensure t
@@ -248,7 +255,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode solarized-theme smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company color-theme-solarized clojure-mode beacon arduino-mode ace-window))))
+    (slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode solarized-theme smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company color-theme-solarized clojure-mode beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
