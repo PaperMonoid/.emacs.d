@@ -47,7 +47,8 @@
   "Show trailing space."
   (setq whitespace-line-column 80)
   (setq show-trailing-whitespace 1)
-  (setq whitespace-style '(face lines-tail)))
+  (setq whitespace-style '(face lines-tail))
+  (diminish 'whitespace-mode))
 (add-hook 'prog-mode-hook 'show-trailing-whitespace-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
@@ -57,18 +58,23 @@
 ;; Looks
 (use-package beacon
   :ensure t
+  :diminish beacon-mode
   :config (beacon-mode))
 (use-package powerline
   :ensure t
   :hook (emacs-startup . powerline-default-theme))
+(use-package diminish
+  :ensure t)
 (use-package org-bullets
   :ensure t
   :hook org-mode)
 (use-package volatile-highlights
   :ensure t
+  :diminish volatile-highlights-mode
   :init (volatile-highlights-mode))
 (use-package highlight-symbol
   :ensure t
+  :diminish highlight-symbol-mode
   :hook (prog-mode . highlight-symbol-mode))
 (use-package highlight-numbers
   :ensure t
@@ -108,6 +114,9 @@
   ("\\.blade\\." . web-mode))
 (use-package rjsx-mode
   :mode ("\\.js\\'" . js2-mode)
+  :init
+  (setq-default js-indent-level 2)
+  (setq-default css-indent-offset 2)
   :ensure t)
 (use-package typescript-mode
   :ensure t)
@@ -159,6 +168,7 @@
   :ensure t)
 (use-package helm
   :ensure t
+  :diminish helm-mode
   :init
   (setq-default helm-M-x-fuzzy-match t
   		helm-bookmark-show-location t
@@ -175,7 +185,7 @@
   ("M-x" . helm-M-x)
   ("C-x r b" . helm-filtered-bookmarks)
   ("C-x C-f" . helm-find-files)
-  :hook (emacs-startup . helm-mode))
+  :config (helm-mode 1))
 (use-package projectile
   :ensure t
   :config (projectile-mode 1))
@@ -197,21 +207,26 @@
   :hook (prog-mode . flycheck-mode))
 (use-package ws-butler
   :ensure t
+  :diminish ws-butler-mode
   :hook (prog-mode . ws-butler-mode))
 (use-package hungry-delete
   :ensure t
+  :diminish hungry-delete-mode
   :hook (prog-mode . hungry-delete-mode))
 (use-package format-all ;; this mode rocks
   :ensure t
+  :diminish format-all-mode
   :hook (prog-mode . format-all-mode))
 (use-package smartparens
   :ensure t
+  :diminish smartparens-mode
   :hook (prog-mode . smartparens-mode))
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
 (use-package yasnippet
   :ensure t
+  :diminish yas-minor-mode
   :init (yas-global-mode))
 (use-package yasnippet-snippets
   :ensure t)
@@ -220,6 +235,7 @@
 (use-package company
   :after yasnippet
   :ensure t
+  :diminish company-mode
   :config
   ;; http://xuchengpeng.com/2018/04/27/emacs-add-yasnippet-to-company-backends/
   (defvar company-mode/enable-yas t
@@ -255,7 +271,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode solarized-theme smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company color-theme-solarized clojure-mode beacon arduino-mode ace-window))))
+    (diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode solarized-theme smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company color-theme-solarized clojure-mode beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
