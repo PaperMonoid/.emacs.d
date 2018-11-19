@@ -6,6 +6,6 @@
 
 ![screenshot](screenshots/screenshot.jpg)
 
-> Theme: [solarized-light](https://github.com/bbatsov/solarized-emacs)
+> Theme: [twilight-bright-theme](https://github.com/jimeh/twilight-bright-theme.el)
 
 > Font: [monofur](https://www.dafont.com/monofur.font)

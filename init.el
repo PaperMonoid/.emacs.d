@@ -23,14 +23,15 @@
 
 ;; Configurations
 (if (window-system)
-    (set-frame-width (selected-frame) 87))
+    (progn (set-frame-width (selected-frame) 80)
+	   (set-frame-height (selected-frame) 27)))
 (set-frame-font "monofur 13")
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (tooltip-mode -1)
-(fringe-mode 0)
-(set-frame-parameter nil 'internal-border-width 30)
+(fringe-mode 8)
+(set-frame-parameter nil 'internal-border-width 0)
 (setq-default bidi-display-reordering nil)
 (global-hl-line-mode 1)
 (setq-default cursor-type 'box)
@@ -147,6 +148,8 @@
   :ensure t)
 (use-package yaml-mode
   :ensure t)
+(use-package csv-mode
+  :ensure t)
 (use-package dockerfile-mode
   :ensure t)
 (use-package nginx-mode
@@ -252,9 +255,7 @@
   :hook (prog-mode . company-mode))
 
 ;; Theme
-(use-package solarized-theme
-  :ensure t)
-(use-package color-theme-solarized
+(use-package twilight-bright-theme
   :ensure t)
 
 ;; Misc
@@ -271,7 +272,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode solarized-theme smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company color-theme-solarized clojure-mode beacon arduino-mode ace-window))))
+    (diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company clojure-mode beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
