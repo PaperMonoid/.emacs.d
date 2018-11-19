@@ -255,7 +255,9 @@
   :hook (prog-mode . company-mode))
 
 ;; Theme
-(use-package twilight-bright-theme
+(use-package solarized-theme
+  :ensure t)
+(use-package color-theme-solarized
   :ensure t)
 
 ;; Misc
