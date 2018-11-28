@@ -55,6 +55,7 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'emacs-startup-hook '(lambda () (message "Hello TritiumMonoid!")))
 (global-set-key (kbd "<S-return>") (kbd "<return> <return> C-p <tab>"))
+(add-to-list 'auto-mode-alist '("\\.pro\\'" . prolog-mode))
 
 ;; Looks
 (use-package beacon
