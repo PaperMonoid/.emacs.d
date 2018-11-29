@@ -161,6 +161,8 @@
   :ensure t)
 (use-package tex
   :defer t)
+(use-package edit-indirect
+  :ensure t)
 
 ;; Tools
 (use-package magit
