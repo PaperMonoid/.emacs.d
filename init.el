@@ -56,6 +56,8 @@
 (add-hook 'emacs-startup-hook '(lambda () (message "Hello TritiumMonoid!")))
 (global-set-key (kbd "<S-return>") (kbd "<return> <return> C-p <tab>"))
 (add-to-list 'auto-mode-alist '("\\.pro\\'" . prolog-mode))
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((shell . t)))
 
 ;; Looks
 (use-package beacon
@@ -269,6 +271,8 @@
   :config (lorem-ipsum-use-default-bindings))
 (use-package toc-org
   :ensure t)
+(use-package htmlize
+  :ensure t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -277,7 +281,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company clojure-mode beacon arduino-mode ace-window))))
+    (htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode python-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company clojure-mode beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
