@@ -123,6 +123,8 @@
   (setq-default css-indent-offset 2)
   :ensure t)
 (use-package typescript-mode
+  :init
+  (setq-default typescript-indent-level 2)
   :ensure t)
 (use-package python-mode
   :ensure t)
