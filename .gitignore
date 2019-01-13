@@ -1,0 +1,9 @@
+*
+!screenshots/
+!screenshots/*
+!snippets/*/*
+!.gitignore
+!LICENCE
+!README.md
+!init.el
+
