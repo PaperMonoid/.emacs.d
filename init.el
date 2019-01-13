@@ -205,11 +205,6 @@
 (use-package helm-swoop
   :ensure t
   :bind ("C-c C-s" . helm-swoop))
-(use-package virtualenvwrapper
-  :ensure t
-  :config
-  (venv-initialize-interactive-shells)
-  (venv-initialize-eshell))
 
 ;; Programming
 (use-package flycheck
