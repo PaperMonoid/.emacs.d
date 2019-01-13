@@ -126,8 +126,9 @@
   :init
   (setq-default typescript-indent-level 2)
   :ensure t)
-(use-package elpy
-  :ensure t)
+(use-package jedi
+  :ensure t
+  :hook (python-mode-hook . jedi:setup))
 (use-package csharp-mode
   :ensure t)
 (use-package haskell-mode
@@ -255,6 +256,11 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1)
   :hook (prog-mode . company-mode))
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
 
 ;; Theme
 (use-package solarized-theme
