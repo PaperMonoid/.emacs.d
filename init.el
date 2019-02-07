@@ -19,9 +19,10 @@
   "Generate a UUID using linux uuidgen command."
   ;; See also
   ;; http://ergoemacs.org/emacs/elisp_generate_uuid.html
+  ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
   (interactive)
   (shell-command "uuidgen | head -c -1" t)
-  (forward-word 5))
+  (forward-char 36))
 (global-set-key (kbd "<f1> u u i d") 'insert-uuid)
 
 ;; use-package autoload
