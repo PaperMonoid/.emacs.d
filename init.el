@@ -14,6 +14,16 @@
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
+;; Custom functions.
+(defun insert-uuid ()
+  "Generate a UUID using linux uuidgen command."
+  ;; See also
+  ;; http://ergoemacs.org/emacs/elisp_generate_uuid.html
+  (interactive)
+  (shell-command "uuidgen | head -c -1" t)
+  (forward-word 5))
+(global-set-key (kbd "<f1> u u i d") 'insert-uuid)
+
 ;; use-package autoload
 (if (not (package-installed-p 'use-package))
     (progn
@@ -284,7 +294,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company clojure-mode beacon arduino-mode ace-window))))
+    (htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
