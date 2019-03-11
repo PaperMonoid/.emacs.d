@@ -125,6 +125,7 @@
   :ensure t
   :init
   (setq-default web-mode-code-indent-offset 2)
+  (setq-default web-mode-markup-indent-offset 2)
   :mode
   ("\\.html\\'" . web-mode)
   ("\\.php\\'" . web-mode)
