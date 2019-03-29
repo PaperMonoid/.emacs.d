@@ -167,6 +167,8 @@
   :ensure t)
 (use-package kotlin-mode
   :ensure t)
+(use-package groovy-mode
+  :ensure t)
 (use-package gradle-mode
   :ensure t)
 (use-package json-mode
@@ -307,7 +309,7 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (gradle-mode kotlin-mode color-theme-solarized htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company beacon arduino-mode ace-window))))
+    (groovy-mode gradle-mode kotlin-mode color-theme-solarized htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company beacon arduino-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
