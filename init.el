@@ -195,6 +195,8 @@
 (use-package magit
   :ensure t)
 (use-package flymd
+  :init
+  (setq-default flymd-output-directory "/tmp")
   :ensure t)
 (use-package restclient
   :mode ("\\.http\\'" . restclient-mode)
