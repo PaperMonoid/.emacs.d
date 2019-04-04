@@ -124,6 +124,7 @@
 (use-package web-mode
   :ensure t
   :init
+  (setq-default web-mode-indent-style 2)
   (setq-default web-mode-code-indent-offset 2)
   (setq-default web-mode-markup-indent-offset 2)
   :mode
