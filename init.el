@@ -1,6 +1,6 @@
-;;; init.el --- TritiumMonoids configuration file.
+;;; init.el --- PaperMonoids configuration file.
 ;;; Commentary:
-;;; TritiumMonoids configuration file.
+;;; PaperMonoids configuration file.
 ;;; Code:
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -64,7 +64,7 @@
 (add-hook 'prog-mode-hook 'show-trailing-whitespace-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
-(add-hook 'emacs-startup-hook '(lambda () (message "Hello TritiumMonoid!")))
+(add-hook 'emacs-startup-hook '(lambda () (message "Hello PaperMonoid!")))
 (global-set-key (kbd "<S-return>") (kbd "<return> <return> C-p <tab>"))
 (add-to-list 'auto-mode-alist '("\\.pro\\'" . prolog-mode))
 (org-babel-do-load-languages
