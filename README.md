@@ -8,4 +8,4 @@
 
 > Theme: [solarized-light](https://github.com/bbatsov/solarized-emacs)
 
-> Font: [monofur](https://www.dafont.com/monofur.font)
+> Font: DejaVu Sans Mono Book

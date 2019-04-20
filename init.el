@@ -36,7 +36,7 @@
 (if (window-system)
     (progn (set-frame-width (selected-frame) 80)
 	   (set-frame-height (selected-frame) 27)))
-(set-frame-font "monofur 15")
+(set-frame-font "DejaVu Sans Mono Book 13")
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
