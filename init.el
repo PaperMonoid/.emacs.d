@@ -186,6 +186,9 @@
   :ensure t)
 (use-package markdown-toc
   :ensure t)
+(use-package nasm-mode
+  :ensure t
+  :mode ("\\.asm\\'" . nasm-mode))
 (use-package tex
   :defer t)
 (use-package edit-indirect
