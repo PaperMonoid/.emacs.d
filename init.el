@@ -69,7 +69,7 @@
 (add-to-list 'auto-mode-alist '("\\.pro\\'" . prolog-mode))
 (org-babel-do-load-languages
  'org-babel-load-languages '((shell . t)))
-(setq-default scheme-program-name "guile")
+(setq-default scheme-program-name "csi -:c")
 
 ;; Looks
 (use-package beacon
