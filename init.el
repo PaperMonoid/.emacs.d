@@ -69,7 +69,6 @@
 (add-to-list 'auto-mode-alist '("\\.pro\\'" . prolog-mode))
 (org-babel-do-load-languages
  'org-babel-load-languages '((shell . t)))
-(setq-default scheme-program-name "csi -:c")
 
 ;; Looks
 (use-package beacon
@@ -157,6 +156,8 @@
 (use-package haskell-mode
   :ensure t)
 (use-package racket-mode
+  :ensure t)
+(use-package quack
   :ensure t)
 (use-package slime
   :ensure t
@@ -330,7 +331,10 @@
     ("19b9349a6b442a2b50e5b82be9de45034f9b08fa36909e0b1be09433234610bb" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (emojify string-inflection vue-mode groovy-mode gradle-mode kotlin-mode color-theme-solarized htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop helm-projectile haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company beacon arduino-mode ace-window))))
+    (quack emojify string-inflection vue-mode groovy-mode gradle-mode kotlin-mode color-theme-solarized htmlize diminish slime-company slime flycheck hl-todo highlight-numbers highlight-symbol yasnippet-snippets yaml-mode ws-butler web-mode volatile-highlights use-package typescript-mode smartparens smart-forward scala-mode rjsx-mode restclient racket-mode powerline org-bullets nginx-mode markdown-toc magit json-mode irony hungry-delete helm-swoop haskell-mode go-mode gnuplot-mode format-all flymd ess dockerfile-mode csharp-mode company beacon arduino-mode ace-window)))
+ '(quack-programs
+   (quote
+    ("csi -:c" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
