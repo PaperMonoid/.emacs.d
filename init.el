@@ -146,8 +146,6 @@
   :init
   (setq-default typescript-indent-level 2)
   :ensure t)
-(use-package vue-mode
-  :ensure t)
 (use-package jedi
   :ensure t
   :hook (python-mode-hook . jedi:setup))
@@ -168,8 +166,6 @@
   :ensure t)
 (use-package irony
   :ensure t)
-(use-package arduino-mode
-  :ensure t)
 (use-package go-mode
   :ensure t)
 (use-package scala-mode
@@ -184,7 +180,7 @@
   :ensure t)
 (use-package yaml-mode
   :ensure t)
-(use-package csv-mode
+(use-package csv
   :ensure t)
 (use-package dockerfile-mode
   :ensure t)
