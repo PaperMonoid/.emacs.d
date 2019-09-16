@@ -193,6 +193,8 @@
 (use-package nasm-mode
   :ensure t
   :mode ("\\.asm\\'" . nasm-mode))
+(use-package graphviz-dot-mode
+  :ensure t)
 (use-package tex
   :defer t)
 (use-package edit-indirect
