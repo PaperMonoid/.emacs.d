@@ -1,6 +1,3 @@
-[submodule "espresso"]
-path = themes/espresso
-url = https://github.com/PaperMonoid/color-theme-espresso.git
 [submodule "themes/color-theme-espresso"]
 	path = themes/color-theme-espresso
 	url = https://github.com/PaperMonoid/color-theme-espresso.git
