@@ -4,7 +4,7 @@
 
 ---
 
-![screenshot](screenshots/screenshot.jpg)
+![screenshot](screenshots/screenshot.gif)
 
 > Theme: [espresso](https://github.com/PaperMonoid/color-theme-espresso)
 
