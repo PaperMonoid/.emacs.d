@@ -37,7 +37,7 @@
   (setq-default bidi-display-reordering nil)
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
-  (load-file (concat user-emacs-directory "themes/espresso-theme.el"))
+  (load-file (concat user-emacs-directory "themes/color-theme-espresso/espresso-theme.el"))
   (enable-theme 'espresso))
 
 
