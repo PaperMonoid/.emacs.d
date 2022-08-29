@@ -69,7 +69,7 @@
   (use-package volatile-highlights
     :ensure t
     :diminish volatile-highlights-mode
-    :init (volatile-highlights-mode))
+    :config (volatile-highlights-mode))
   (use-package highlight-symbol
     :ensure t
     :diminish highlight-symbol-mode
