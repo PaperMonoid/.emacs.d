@@ -1,8 +1,12 @@
 *
 !screenshots/
 !screenshots/*
+!themes/
+!themes/*
+!themes/*/*
 !snippets/*/*
 !.gitignore
+!.gitmodules
 !LICENCE
 !README.md
 !init.el
