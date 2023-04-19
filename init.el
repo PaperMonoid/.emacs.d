@@ -33,7 +33,7 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
-  (set-frame-font "Monofur-14:antialias=true")
+  (set-frame-font "Monofur-18:antialias=true")
   (setq-default bidi-display-reordering nil)
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
@@ -106,6 +106,10 @@
 
 (defun setup/programming ()
   "Progamming tools and languages modes."
+  (use-package geiser
+    :ensure t)
+  (use-package geiser-chez
+    :ensure t)
   (use-package haskell-mode
     :ensure t)
   (use-package json-mode
@@ -183,7 +187,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company doom-modeline use-package beacon)))
+   '(geiser-chez geiser geiser-mode company doom-modeline use-package beacon)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
