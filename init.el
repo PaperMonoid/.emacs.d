@@ -33,7 +33,7 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
-  (set-frame-font "Monofur-18:antialias=true")
+  (set-frame-font "Monofur-16:antialias=true")
   (setq-default bidi-display-reordering nil)
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
