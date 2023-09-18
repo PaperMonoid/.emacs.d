@@ -79,7 +79,12 @@
     :hook (prog-mode . highlight-numbers-mode))
   (use-package hl-todo
     :ensure t
-    :hook (prog-mode . hl-todo-mode)))
+    :hook (prog-mode . hl-todo-mode))
+  (use-package emojify
+    :diminish global-emojify-mode
+    :hook (after-init . global-emojify-mode))
+  (use-package so-long
+    :config (global-so-long-mode)))
 
 
 (defun setup/completion ()
@@ -113,6 +118,8 @@
   (use-package haskell-mode
     :ensure t)
   (use-package json-mode
+    :ensure t)
+  (use-package js2-mode
     :ensure t)
   (use-package yaml-mode
     :ensure t)
@@ -168,7 +175,7 @@
 
 (defun setup/programming-hooks ()
   (add-hook
-   'python-mode-hookf
+   'python-mode-hook
    (lambda () (setq-default format-all-formatters '(("Python" black))))))
 
 
@@ -187,7 +194,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(geiser-chez geiser geiser-mode company doom-modeline use-package beacon)))
+   '(js2 rjsx-mode emojify geiser-chez geiser geiser-mode company doom-modeline use-package beacon)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
