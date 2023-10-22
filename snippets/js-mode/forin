@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: forin
-# key: forin
-# contributor: tritiummonoid
-# --
-for (let ${1:i} in ${2:collection}) {
-    $0
-}

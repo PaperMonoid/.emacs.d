@@ -1,26 +1,13 @@
 ;;; init.el --- PaperMonoids configuration file.
 ;;; Commentary:
 ;;; PaperMonoids configuration file.
-;;
-;;; IMPORTANT:
-;;; run command M-x all-the-icons-install-fonts
-;;; and install the downloaded fonts
-;;; after installation to fix doomline icons
 ;;;
 ;;; Code:
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list
+ 'package-archives
+ '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-
-
-(defun setup/use-package ()
-  "Setup the necesary tools to install all the required packages."
-  (if (not (package-installed-p 'use-package))
-      (progn
-	(package-refresh-contents)
-	(package-install 'use-package)))
-  (require 'use-package))
 
 
 (defun setup/gui ()
@@ -34,17 +21,19 @@
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
   (set-frame-font "Monofur-16:antialias=true")
-  (setq-default bidi-display-reordering nil)
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
   (load-file (concat user-emacs-directory "themes/color-theme-espresso/espresso-theme.el"))
-  (enable-theme 'espresso))
+  (enable-theme 'espresso)
+  (global-so-long-mode 1))
 
 
 (defun setup/autosave-and-backup ()
   "Backup and autosave directories to prevent making files everywhere."
-  (setq-default backup-directory (concat user-emacs-directory "backup/"))
-  (setq-default auto-save-directory (concat user-emacs-directory "auto-save/"))
+  (setq-default backup-directory
+		(concat user-emacs-directory "backup/"))
+  (setq-default auto-save-directory
+		(concat user-emacs-directory "auto-save/"))
   (unless (file-exists-p auto-save-directory)
     (make-directory auto-save-directory))
   (setq backup-directory-alist
@@ -53,19 +42,25 @@
 	`((".*" ,auto-save-directory t))))
 
 
+(defun setup/use-package ()
+  "Setup the necesary tools to install all the required packages."
+  (if (not (package-installed-p 'use-package))
+      (progn
+	(package-refresh-contents)
+	(package-install 'use-package)))
+  (require 'use-package))
+
+
 (defun setup/look ()
   "Look and feel of the editor."
+  (use-package diminish
+    :ensure t)
   (use-package beacon
     :ensure t
     :diminish beacon-mode
     :config
     (beacon-mode)
     (setq beacon-blink-duration 0.625))
-  (use-package all-the-icons
-    :ensure t)
-  (use-package doom-modeline
-    :ensure t
-    :hook (after-init . doom-modeline-mode))
   (use-package volatile-highlights
     :ensure t
     :diminish volatile-highlights-mode
@@ -76,23 +71,22 @@
     :hook (prog-mode . highlight-symbol-mode))
   (use-package highlight-numbers
     :ensure t
+    :diminish highlight-numbers-mode
     :hook (prog-mode . highlight-numbers-mode))
   (use-package hl-todo
     :ensure t
-    :hook (prog-mode . hl-todo-mode))
-  (use-package emojify
-    :diminish global-emojify-mode
-    :hook (after-init . global-emojify-mode))
-  (use-package so-long
-    :config (global-so-long-mode)))
+    :diminish hl-todo-mode
+    :hook (prog-mode . hl-todo-mode)))
 
 
 (defun setup/completion ()
   "Syntax checking, code completion and helm."
   (use-package flycheck
     :ensure t
+    :diminish 'flycheck-mode
     :hook (prog-mode . flycheck-mode)
-    :config (setq flycheck-python-pycompile-executable "python"))
+    :config
+    (setq flycheck-python-pycompile-executable "python"))
   (use-package company
     :ensure t
     :diminish company-mode
@@ -102,6 +96,7 @@
     :hook (prog-mode . company-mode))
   (use-package helm
     :ensure t
+    :diminish helm-mode
     :config
     (global-set-key (kbd "M-x") #'helm-M-x)
     (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
@@ -167,7 +162,11 @@
     :hook (prog-mode . smartparens-mode)
     :config
     (sp-local-pair '(scheme-mode) "'" "'" :actions nil)
-    (sp-local-pair '(lisp-mode) "'" "'" :actions nil))
+    (sp-local-pair '(scheme-mode) "`" "`" :actions nil)
+    (sp-local-pair '(lisp-mode) "'" "'" :actions nil)
+    (sp-local-pair '(lisp-mode) "`" "`" :actions nil)
+    (sp-local-pair '(emacs-lisp-mode) "'" "'" :actions nil)
+    (sp-local-pair '(emacs-lisp-mode) "`" "`" :actions nil))
   (use-package expand-region
     :ensure t
     :bind ("C-=" . er/expand-region)))
@@ -179,9 +178,9 @@
    (lambda () (setq-default format-all-formatters '(("Python" black))))))
 
 
-(setup/use-package)
 (setup/gui)
 (setup/autosave-and-backup)
+(setup/use-package)
 (setup/look)
 (setup/completion)
 (setup/programming)
@@ -193,8 +192,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(js2 rjsx-mode emojify geiser-chez geiser geiser-mode company doom-modeline use-package beacon)))
+ '(package-selected-packages '(highlight-indent-guides beacon use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

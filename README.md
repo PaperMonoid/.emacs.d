@@ -17,5 +17,3 @@
 1. Download and install the [Monofur](https://www.dafont.com/monofur.font) font
 2. Clone github repository recursively `git clone --recurse-submodules https://github.com/PaperMonoid/.emacs.d.git`
 3. Open Emacs and wait for installations to finish
-4. Run `M-x all-the-icons-install-fonts`
-5. Install the downloaded fonts

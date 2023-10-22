@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: forof
-# key: forof
-# contributor: tritiummonoid
-# --
-for (let ${1:value} of ${2:collection}) {
-    $0
-}

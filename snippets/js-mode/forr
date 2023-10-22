@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: forreverse
-# key: forr
-# contributor: tritiummonoid
-# --
-for (let ${1:i} = ${2:collection}.length - 1; $1 > 0; $1--) {
-    $0
-}

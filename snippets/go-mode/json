@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: json
-# key: json
-# contributor: tritiummonoid
-# --
-\`json:\"${1:name}\"\`$0
