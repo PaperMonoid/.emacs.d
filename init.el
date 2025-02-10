@@ -20,12 +20,16 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
-  (set-frame-font "Monofur-16:antialias=true")
+  (set-frame-font "Comic Mono-17:antialias=true")
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
-  (load-file (concat user-emacs-directory "themes/color-theme-espresso/espresso-theme.el"))
+  (global-so-long-mode 1)
+  (load-file
+   (concat user-emacs-directory
+	   "themes/color-theme-espresso/espresso-theme.el"))
   (enable-theme 'espresso)
-  (global-so-long-mode 1))
+  (setq mac-command-modifier 'meta)
+  (setq mac-right-option-modifier 'option))
 
 
 (defun setup/autosave-and-backup ()
@@ -51,8 +55,11 @@
   (require 'use-package))
 
 
-(defun setup/look ()
-  "Look and feel of the editor."
+(defun setup/look-and-feel ()
+  ;; (use-package sketch-themes
+  ;;   :ensure t
+  ;;   :config
+  ;;   (load-theme 'sketch-white t))
   (use-package diminish
     :ensure t)
   (use-package beacon
@@ -73,35 +80,36 @@
     :ensure t
     :diminish highlight-numbers-mode
     :hook (prog-mode . highlight-numbers-mode))
-  (use-package hl-todo
+  (use-package swiper
+    :ensure t)
+  (use-package counsel
+    :ensure t)
+  (use-package ivy
+    :diminish ivy-mode
     :ensure t
-    :diminish hl-todo-mode
-    :hook (prog-mode . hl-todo-mode)))
-
-
-(defun setup/completion ()
-  "Syntax checking, code completion and helm."
-  (use-package flycheck
-    :ensure t
-    :diminish 'flycheck-mode
-    :hook (prog-mode . flycheck-mode)
     :config
-    (setq flycheck-python-pycompile-executable "python"))
-  (use-package company
-    :ensure t
-    :diminish company-mode
-    :init
-    (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1)
-    :hook (prog-mode . company-mode))
-  (use-package helm
-    :ensure t
-    :diminish helm-mode
-    :config
-    (global-set-key (kbd "M-x") #'helm-M-x)
-    (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-    (global-set-key (kbd "C-x C-f") #'helm-find-files)
-    (helm-mode 1)))
+    (ivy-mode)
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    ;; enable this if you want `swiper' to use it
+    ;; (setq search-default-mode #'char-fold-to-regexp)
+    (global-set-key "\C-s" 'swiper)
+    (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    (global-set-key (kbd "<f6>") 'ivy-resume)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    (global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+    (global-set-key (kbd "<f1> l") 'counsel-find-library)
+    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c k") 'counsel-ag)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)))
 
 
 (defun setup/programming ()
@@ -110,11 +118,7 @@
     :ensure t)
   (use-package geiser-chez
     :ensure t)
-  (use-package haskell-mode
-    :ensure t)
   (use-package json-mode
-    :ensure t)
-  (use-package js2-mode
     :ensure t)
   (use-package yaml-mode
     :ensure t)
@@ -126,8 +130,6 @@
     :ensure t)
   (use-package markdown-mode
     :ensure t)
-  (use-package markdown-toc
-    :ensure t)
   (use-package nasm-mode
     :ensure t
     :mode ("\\.asm\\'" . nasm-mode))
@@ -135,8 +137,6 @@
     :ensure t)
   (use-package tex
     :defer t)
-  (use-package edit-indirect
-    :ensure t)
   (use-package string-inflection
     :ensure t
     :bind
@@ -144,47 +144,13 @@
     ("C-c C" . string-inflection-camelcase)
     ("C-c L" . string-inflection-lower-camelcase)
     ("C-c J" . string-inflection-java-style-cycle))
-  (use-package ws-butler
-    :ensure t
-    :diminish ws-butler-mode
-    :hook (prog-mode . ws-butler-mode))
   (use-package hungry-delete
     :ensure t
     :diminish hungry-delete-mode
     :hook (prog-mode . hungry-delete-mode))
-  (use-package format-all ;; this mode rocks
-    :ensure t
-    :diminish format-all-mode
-    :hook (prog-mode . format-all-mode))
-  (use-package smartparens
-    :ensure t
-    :diminish smartparens-mode
-    :hook (prog-mode . smartparens-mode)
-    :config
-    (sp-local-pair '(scheme-mode) "'" "'" :actions nil)
-    (sp-local-pair '(scheme-mode) "`" "`" :actions nil)
-    (sp-local-pair '(lisp-mode) "'" "'" :actions nil)
-    (sp-local-pair '(lisp-mode) "`" "`" :actions nil)
-    (sp-local-pair '(emacs-lisp-mode) "'" "'" :actions nil)
-    (sp-local-pair '(emacs-lisp-mode) "`" "`" :actions nil))
   (use-package expand-region
     :ensure t
     :bind ("C-=" . er/expand-region)))
-
-
-(defun setup/programming-hooks ()
-  (add-hook
-   'python-mode-hook
-   (lambda () (setq-default format-all-formatters '(("Python" black))))))
-
-
-(setup/gui)
-(setup/autosave-and-backup)
-(setup/use-package)
-(setup/look)
-(setup/completion)
-(setup/programming)
-(setup/programming-hooks)
 
 
 (custom-set-variables
@@ -192,14 +158,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(highlight-indent-guides beacon use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+ '(custom-safe-themes
+   '("a4ea82553152f6910c9dcf306d8a7b63a2667d2f9aca9c07e3a8a3a018d5cf72" default))
+ '(package-selected-packages
+   '(expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv yaml-mode json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
 
 
+(setup/gui)
+(setup/autosave-and-backup)
+(setup/use-package)
+(setup/look-and-feel)
+(setup/programming)
 (delete-selection-mode 1)
 ;;; init.el ends here

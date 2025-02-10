@@ -8,12 +8,12 @@
 
 > Theme: [espresso](https://github.com/PaperMonoid/color-theme-espresso)
 
-> Font: [Monofur](https://www.dafont.com/monofur.font)
+> Font: [Comic Mono Font](https://dtinth.github.io/comic-mono-font/)
 
 ---
 
 # Instructions
 
-1. Download and install the [Monofur](https://www.dafont.com/monofur.font) font
+1. Download and install the [Comic Mono](https://dtinth.github.io/comic-mono-font/) font
 2. Clone github repository recursively `git clone --recurse-submodules https://github.com/PaperMonoid/.emacs.d.git`
 3. Open Emacs and wait for installations to finish
