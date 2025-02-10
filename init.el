@@ -56,10 +56,6 @@
 
 
 (defun setup/look-and-feel ()
-  ;; (use-package sketch-themes
-  ;;   :ensure t
-  ;;   :config
-  ;;   (load-theme 'sketch-white t))
   (use-package diminish
     :ensure t)
   (use-package beacon
