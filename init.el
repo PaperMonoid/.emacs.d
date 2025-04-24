@@ -8,7 +8,8 @@
  'package-archives
  '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-
+(setq package-install-upgrade-built-in t)
+(progn (unload-feature 'seq t) (require 'seq))
 
 (defun setup/gui ()
   "Basic configuration to the GNU Emacs GUI."
@@ -110,6 +111,8 @@
 
 (defun setup/programming ()
   "Progamming tools and languages modes."
+  (use-package magit
+    :ensure t)
   (use-package geiser
     :ensure t)
   (use-package geiser-chez
@@ -157,7 +160,7 @@
  '(custom-safe-themes
    '("a4ea82553152f6910c9dcf306d8a7b63a2667d2f9aca9c07e3a8a3a018d5cf72" default))
  '(package-selected-packages
-   '(expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv yaml-mode json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
+   '(yaml-mode magit expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
 
 
 (setup/gui)
@@ -167,3 +170,9 @@
 (setup/programming)
 (delete-selection-mode 1)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
