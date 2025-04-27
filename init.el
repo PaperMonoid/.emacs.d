@@ -11,8 +11,10 @@
 (setq package-install-upgrade-built-in t)
 (progn (unload-feature 'seq t) (require 'seq))
 
+
 (defun setup/gui ()
   "Basic configuration to the GNU Emacs GUI."
+  (linum-mode 1)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -21,7 +23,7 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
-  (set-frame-font "Comic Mono-17:antialias=true")
+  (set-frame-font "Comic Mono-16:antialias=true")
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
   (global-so-long-mode 1)
@@ -33,18 +35,19 @@
   (setq mac-right-option-modifier 'option))
 
 
-(defun setup/autosave-and-backup ()
-  "Backup and autosave directories to prevent making files everywhere."
-  (setq-default backup-directory
-		(concat user-emacs-directory "backup/"))
-  (setq-default auto-save-directory
-		(concat user-emacs-directory "auto-save/"))
-  (unless (file-exists-p auto-save-directory)
-    (make-directory auto-save-directory))
-  (setq backup-directory-alist
-	`((".*" . ,backup-directory)))
-  (setq auto-save-file-name-transforms
-	`((".*" ,auto-save-directory t))))
+(defun setup/autosave-lock-and-backup ()
+  "Backup, lock, and autosave directories to prevent making files everywhere."
+  (let ((backup-dir (expand-file-name "backup/"     user-emacs-directory))
+        (autosave-dir (expand-file-name "autosave/"  user-emacs-directory))
+        (lockfile-dir (expand-file-name "lockfiles/"  user-emacs-directory)))
+    (dolist (dir (list backup-dir autosave-dir lockfile-dir))
+      (make-directory dir :parents))
+    ;; 1. backups  foo~
+    (setq backup-directory-alist `(("." . ,backup-dir)))
+    ;; 2. auto-saves  #foo#
+    (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+    ;; 3. lock files  .#foo
+    (setq lock-file-name-transforms `((".*" ,lockfile-dir t)))))
 
 
 (defun setup/use-package ()
@@ -164,15 +167,9 @@
 
 
 (setup/gui)
-(setup/autosave-and-backup)
+(setup/autosave-lock-and-backup)
 (setup/use-package)
 (setup/look-and-feel)
 (setup/programming)
 (delete-selection-mode 1)
 ;;; init.el ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
