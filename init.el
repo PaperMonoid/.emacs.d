@@ -120,9 +120,13 @@
   "Progamming tools and languages modes."
   (use-package magit
     :ensure t)
+  (use-package go-mode
+    :ensure t)
   (use-package geiser
     :ensure t)
   (use-package geiser-chez
+    :ensure t)
+  (use-package haskell-mode
     :ensure t)
   (use-package json-mode
     :ensure t)
@@ -167,7 +171,7 @@
  '(custom-safe-themes
    '("a4ea82553152f6910c9dcf306d8a7b63a2667d2f9aca9c07e3a8a3a018d5cf72" default))
  '(package-selected-packages
-   '(flycheck yaml-mode magit expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
+   '(go-mode haskell-mode flycheck yaml-mode magit expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
 
 
 (setup/gui)
