@@ -23,7 +23,7 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
-  (set-frame-font "Comic Mono-16:antialias=true")
+  (set-frame-font "Comic Mono-17:antialias=true")
   (setq-default cursor-type 'bar)
   (setq-default org-startup-with-inline-images t)
   (global-so-long-mode 1)
