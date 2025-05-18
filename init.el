@@ -14,12 +14,12 @@
 
 (defun setup/gui ()
   "Basic configuration to the GNU Emacs GUI."
-  (linum-mode 1)
+  (add-hook 'prog-mode-hook 'linum-mode)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (tooltip-mode -1)
-  (fringe-mode 8)
+  (fringe-mode 16)
   (global-hl-line-mode 1)
   (blink-cursor-mode 1)
   (set-frame-parameter nil 'internal-border-width 0)
