@@ -80,6 +80,9 @@
     :ensure t
     :diminish highlight-numbers-mode
     :hook (prog-mode . highlight-numbers-mode))
+  (use-package telephone-line
+    :ensure t
+    :config (telephone-line-mode 1))
   (use-package flycheck
     :ensure t
     :config
@@ -171,7 +174,7 @@
  '(custom-safe-themes
    '("a4ea82553152f6910c9dcf306d8a7b63a2667d2f9aca9c07e3a8a3a018d5cf72" default))
  '(package-selected-packages
-   '(go-mode haskell-mode flycheck yaml-mode magit expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
+   '(telephone-line go-mode haskell-mode flycheck yaml-mode magit expand-region hungry-delete string-inflection graphviz-dot-mode nasm-mode markdown-mode nginx-mode dockerfile-mode csv json-mode highlight-numbers highlight-symbol volatile-highlights beacon diminish counsel swiper geiser-chez geiser use-package)))
 
 
 (setup/gui)
