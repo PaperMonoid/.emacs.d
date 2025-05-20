@@ -183,4 +183,5 @@
 (setup/look-and-feel)
 (setup/programming)
 (delete-selection-mode 1)
+(load-file (concat user-emacs-directory "utils.el"))
 ;;; init.el ends here
